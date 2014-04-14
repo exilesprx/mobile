@@ -1,0 +1,451 @@
+@charset "utf-8";
+html {
+	height: 100%;
+}
+body {
+	margin: 0px;
+	padding: 0px;
+	font-family: 'Arial';
+	width: auto;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+#header {
+	width: 100%;
+	background-color: #FFFFFF;
+	font-size: 32px;
+	display: block;
+	text-align: left;
+	padding: 20px 0px 10px 0px;
+	min-height: 80px;
+}
+#logo {
+	height: auto;
+	width: 50px;
+	margin: auto auto auto 10px;
+	display: block;
+}
+
+#loginbox {
+	width: 400px;
+	padding: 20px;
+	border-width: 1px;
+	border-style: solid;
+	background-color: #EDEDED;
+	margin: 20px auto;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+}
+
+#loginbox input[type=text], #loginbox input[type=password] {
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+#loginbox #forgot-password {
+	font-weight: bold;
+	display: inline-block;
+	left: 150px;
+	position: relative;
+}
+#loginbox input[type=submit] {
+	display: inline-block !important;
+}
+#loginbox #errors {
+	color: red;
+}
+#logout {
+	/*float: right;
+	position: absolute;
+	top: 30px;
+	right: 5px;*/
+}
+#logout input {
+	width: 100px;
+	font-size: 12pt;
+	font-weight: bold;
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	cursor: pointer;
+}
+#wrapper {
+	min-width: 800px;
+}
+
+#content-wrapper {
+	max-width: 900px;
+	margin-top: 20px;
+	padding: 20px;
+	margin: auto;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	/*background-color: #E5E5E5;
+	border: 1px solid lightgrey;*/
+	clear: both;
+}
+
+#content-wrapper #content {
+	text-align: left;
+	color: black;
+	padding: 10px;
+	margin: 15px 0px;
+}
+
+#content {
+	padding: 0px 5px 10px 5px;
+}
+
+#content #errors {
+	color: red;
+	font-weight: bold;
+}
+
+#ellipsis {
+	width: 100%;
+	height: 42px;
+	display: block;
+}
+
+.bold {
+	font-weight: bold;
+}
+form {
+	position: relative;
+}
+form input[input=checkbox] {
+	width: auto;
+	display: inline-block;
+}
+form input[type=text], form input[type=submit], form input[type=file], form input[type=password], form textarea, form select {
+	width: 100%;
+	margin: 0px 0px 10px 0px;
+	padding: 5px;
+	font-size: 16pt;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+form textarea {
+	height: 400px;
+	font-size: 10pt !important;
+}
+#submit, .button  {
+	width: auto;
+	position: relative;
+}
+#back-button {
+	padding: 5px;
+	display: inline-block;
+}
+form select {
+	width: auto;
+	max-width: 225px;
+}
+form input[type=text], form input[type=submit], form input[type=password], form input[type=file], .connectedSortable li {
+	padding: 5px;
+	display: block;
+}
+.button {
+	padding: 5px;
+	color: #F0F0F0;
+	display: inline-block;
+}
+form input[type=file] {
+	width: auto !important;
+}
+
+form input[type=submit], #back-button, .button  {
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	font-weight: bold;
+	font-size: 18pt;
+}
+.small-button {
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	font-weight: bold;
+	font-size: 12pt;
+	padding: 2px;
+}
+form #close-image {
+	display: none;
+}
+input#old-image:hover + #close-image, input#old-logo:hover + #close-image, #close-image:hover {
+	display: inline-block;
+	position: absolute;
+	right: 10px;
+	margin-top: -40px;
+}
+
+#page-heading {
+	font-size: 20pt;
+	color: #942200;
+	text-align: left;
+	font-weight: bold;
+}
+
+#close-form {
+	float: right;
+	border-width: 1px;
+	border-style: solid;
+	padding: 10px;
+	margin: 0px 0px 10px 0px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	font-weight: bold;
+	color: #942200;
+	background-color: #F7CF4C;
+	border: 2px solid #BC9000;
+}
+
+#username-msg {
+	/*position: absolute;
+	right: 5px;
+	top: 10px;*/
+	margin: 0;
+	font-size: 12pt;
+}
+
+#site-msg {
+	/*position: absolute;
+	right: 5px;
+	top: 25px;*/
+	margin: 0;
+	font-size: 10pt;
+}
+
+#wrapper #sidebar {
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	width: 200px;
+	float: left;
+}
+#wrapper #sidebar ul, #content-wrapper #topbar ul {
+	padding: 0;
+}
+#wrapper #sidebar .page {
+	list-style-type: none;
+	font-weight: bold;
+	padding: 5px 10px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius:  5px;
+	border-width: 1px;
+	border-style: solid;
+	position: relative;
+}
+#wrapper #sidebar li a {
+	display: block;
+}
+
+#wrapper #content {
+	float: left;
+	width: 680px;
+}
+
+#content.page-add, #content.page-delete, #content.navigation {
+	width: 100% !important;
+}
+
+#content-wrapper {
+	border-width: 1px;
+	border-style: solid;
+}
+
+#topbar {
+	max-width: 900px;
+	margin: auto;
+	padding: 0px 20px;
+	position: relative;
+	top: 2px;
+}
+
+#topbar li {
+	float: left;
+	list-style-type: none;
+	padding: 5px 10px;
+	border-radius: 5px 5px 0px 0px;
+	-moz-border-radius: 5px 5px 0px 0px;
+	-webkit-border-radius:  5px 5px 0px 0px;
+	border-width: 1px 1px 0px 1px;
+	border-style: solid;
+	margin: 0px 0px;
+	display: block;
+	position: relative;
+}
+#topbar li:nth-child(2) {
+	left: -6px;
+}
+#topbar li:nth-child(3) {
+	left: -12px;
+}
+#topbar li:nth-child(4) {
+	left: -18px;
+}
+#topbar li:nth-child(5) {
+	left: -24px;
+}
+#topbar li:nth-child(6) {
+	left: -30px;
+}
+#topbar li:nth-child(7) {
+	left: -36px;
+}
+#topbar li:nth-child(8) {
+	left: -42px;
+}
+#topbar li:nth-child(9) {
+	left: -48px;
+}
+#topbar li.active {
+	z-index: 100;
+}
+#sidebar .page.active {
+	border-width: 0px !important;
+	font-size: 20pt;
+}
+#topbar a {
+	font-weight: bold;
+}
+form label {
+	font-weight: bold;
+}
+.page.delete, .page.add {
+	font-size: 8pt;
+}
+#content.page-delete form div {
+	width: 400px;
+	margin: auto;
+	text-align: center;
+}
+#content.page-delete input[type=submit]{
+	min-width: 100px;
+	width: auto;
+	display: inline-block;
+	cursor: pointer;
+}
+#content.navigation form input {
+	width: 100px;
+	display: inline;
+}
+#content.widget-edit {
+	width: 100% !important;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+#content.widget-edit .page {
+	padding: 20px;
+	width: auto;
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+#content.widget-edit .page-name {
+	font-size: 16pt;
+	font-weight: bold;
+}
+#content.widget-edit .widget-name {
+	font-size: 14pt;
+	font-weight: normal;
+}
+#content.widget-edit ul {
+	list-style-type: none;
+}
+#content.widget-edit ul li span, #content.widget-edit ul li a {
+	vertical-align: top;
+}
+
+.connectedSortable li {
+	list-style-type: none;
+	border: 1px solid black;
+	margin: 5px 0px;
+	font-weight: 200;
+	font-size: 14pt;
+}
+.connectedSortable {
+	margin: 5px 0;
+	padding: 5px 0px;
+	border: 1px solid lightgrey;
+}
+#status-message {
+	font-weight: bold;
+	text-align: center;
+}
+.user.list {
+	width: 100% !important;
+}
+.user.list div span, .site.list .list-heading {
+	display: inline-block;
+}
+.user.list div span:nth-child(1), .site.list .list-heading {
+	width: 100px;
+}
+.user.list div span:nth-child(2) {
+	width: 300px;
+}
+.user.list div span:nth-child(3), .user.list div span:nth-child(4) {
+	width: 200px;
+}
+.user.list .list-heading {
+	border-width: 0 0 1px 0;
+	border-style: solid;
+	margin-bottom: 10px;
+}
+
+/*COLORS*/
+#sidebar .page, #logout, #topbar li {
+	background-color: white;
+}
+.user.list .list-heading, #topbar a, #logout, form label, #wrapper #sidebar li.active a, .page.delete, .page.delete a {
+	color: #005796;
+}
+form input[type=submit], .small-button {
+	color: #F0F0F0;
+}
+li.active, #content-wrapper, #wrapper #sidebar li.active a {
+	background-color: #F7F7F7 !important;
+}
+#wrapper {
+	border-top: 2px solid #005796;
+}
+form input[type=submit], #back-button, .button, .small-button  {
+	background-color: #0871BD;
+	border: 2px solid #005796;
+}
+#topbar li, #content-wrapper, #wrapper #sidebar li, #close-form, #logout input, #loginbox input[type=text], #loginbox input[type=password], #loginbox, #status-message, .user.list .list-heading {
+	border-color: lightgrey;
+}
+.page.add, .page.add a{
+	color: #19872A;
+}
+#status-message {
+	color: black;
+}
+a.delete {
+	background-color: #D1001B !important;
+	border: 2px solid #AD0014;
+}
+#content.widget-edit .page {
+	border-color: #D3D3D3;
+}
+#forgot-password {
+	color: #0871BD;
+}
