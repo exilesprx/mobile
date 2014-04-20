@@ -54,6 +54,15 @@ class UserController extends IndexController {
 		$this->layout->page->required = Session::get('errors');
 	}
 
+	public function loginView() {
+
+		if(Auth::check()) {
+			return Redirect::to('admin/welcome');
+		}
+		$this->layout->page = View::make('admin.index');
+		$this->layout->page->users = Users::all();
+	}
+
 	public function login() {
 		$user = Users::where('username', '=', Input::get('username'))->first();
 

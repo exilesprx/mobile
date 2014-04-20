@@ -5,6 +5,7 @@ use Config;
 use Session;
 use View;
 use Request;
+use Redirect;
 use Sites;
 use Auth;
 

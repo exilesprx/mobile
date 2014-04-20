@@ -14,7 +14,7 @@
 			{{HTML::link('/admin/users/rules/' . $currentUser->id, 'Update Widget Rules', array('class' => 'button'))}}
 			<br/><br/>
 
-			{{Form::open('admin/users/update/' . $currentUser->id, 'PUT')}}
+			{{Form::open(array('url' => 'admin/users/update/' . $currentUser->id, 'method' => 'PUT'))}}
 				{{Form::label('username', 'Username')}}
 				{{Form::text('username', $currentUser->username)}}
 				<br/>

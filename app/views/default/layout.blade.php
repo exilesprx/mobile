@@ -16,7 +16,7 @@
 		<div id="header" data-role="header">
 			<h1>
 				<a href="{{Request::root()}}">
-					{{HTML::image($site->logo, 'Logo', array('id' => 'logo', 'height' => '25px', 'width' => 'auto'))}}
+					{{HTML::image($site->home_folder. '/' . $site->logo, 'Logo', array('id' => 'logo', 'height' => '25px', 'width' => 'auto'))}}
 				</a>
 				W3Innovations.net
 			</h1>

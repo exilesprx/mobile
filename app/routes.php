@@ -10,13 +10,8 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-
-Route::any('/', 'IndexController@index');
-Route::any('index/{id}', 'IndexController@index');
-Route::any('index', 'IndexController@index');
-//Route::any('(:any)', 'IndexController@page');
-//Route::any('(:any)/(:any)', 'IndexController@page');
-//Route::any('(:any)/(:any)/(:any)', 'IndexController@page');
+Route::any('', 'IndexController@index');
+Route::any('{page}', 'IndexController@page')->where('page', '^((?!admin).)*$');
 
 Event::listen('404', function() {
 	return Response::error('404');
@@ -38,7 +33,10 @@ View::composer('admin.topnav', function($view) {
 });
 Route::group(array('prefix' => 'admin'), function() {
 	/** Anyone can access these pages **/
-	Route::get('', 'Admin\IndexController@index');
+	Route::get('', function() {
+		return Redirect::to('admin/login')	;
+	});
+	Route::get('login', 'Admin\UserController@loginView');
 	Route::put('login', 'Admin\UserController@login');
 	Route::put('logout', 'Admin\UserController@logout');
 	Route::get('password/reset/{id}', 'Admin\UserController@resetView');
@@ -82,7 +80,7 @@ Route::group(array('prefix' => 'admin'), function() {
 
 		Route::put('page/update/{id}', 'Admin\PageController@update');
 		Route::put('page/create', 'Admin\PageController@create');
-		Route::put('page/delete/(:any)', 'Admin\PageController@delete');
+		Route::put('page/delete/{id}', 'Admin\PageController@delete');
 
 		Route::get('sites/header/edit', 'Admin\SiteController@headerEditView');
 		Route::put('sites/header/edit', 'Admin\SiteController@headerUpdate');

@@ -11,7 +11,7 @@
 					@endforeach
 				@endif
 			</div>
-			{{Form::open_for_files(array('url' => 'admin/page/create', 'method' => 'PUT'))}}
+			{{Form::open(array('url' => 'admin/page/create', 'method' => 'PUT', 'files' => true))}}
 
 				{{Form::label('page_name', 'Page Name')}}
 				{{Form::text('page_name', Input::get('page_name'))}}

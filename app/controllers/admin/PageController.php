@@ -7,6 +7,8 @@ use Redirect;
 use Input;
 use Path;
 use Filesystem;
+use Pages;
+use URL;
 
 class PageController extends IndexController {
 
@@ -43,22 +45,22 @@ class PageController extends IndexController {
 		);
 		$validation = Validator::make(Input::all(), $rules);
 
-		if($validation->passes()) {
-			if($this->site->page()->where('page_url', '=', Input::get('page_url'))->first()) {
-				$errors[] = "A page with the URL of '" . Input::get('page_url') . "'' has already been created. Please specify a unique URL.";
-			}
-			else {
-				$page = new Pages();
-				$page->site_id = $this->site->id;
-				$this->savePage($page);
-
-				$message = 'You have successfully created a new page: <strong>' . $page->page_name . '</strong>.<br/>';
-				$message.= 'The new page can be found at URL: ' . URL::to($page->page_url) . '';
-				return Redirect::to('admin/page')->with('statusMessage', $message);
-			}
+		if($validation->fails()) {
+			return Redirect::to('/admin/page/add')->with('errors', $validation->messages());
 		}
+		
+		if($this->site->page()->where('page_url', '=', Input::get('page_url'))->first()) {
+			$errors[] = "A page with the URL of '" . Input::get('page_url') . "'' has already been created. Please specify a unique URL.";
+		}
+		else {
+			$page = new Pages();
+			$page->site_id = $this->site->id;
+			$this->savePage($page);
 
-		return Redirect::to('/admin/page/add')->with('errors', $validation->errors->all());
+			$message = 'You have successfully created a new page: <strong>' . $page->page_name . '</strong>.<br/>';
+			$message.= 'The new page can be found at URL: ' . URL::to($page->page_url) . '';
+			return Redirect::to('admin/page')->with('statusMessage', $message);
+		}
 	}
 
 	public function update($pageId) {
@@ -68,17 +70,17 @@ class PageController extends IndexController {
 		);
 		$validation = Validator::make(Input::all(), $rules);
 
-		if($validation->passes()) {
-			$page = $this->site->page()->with('navigation')->where('id', '=', $pageId)->first();
-			$this->savePage($page);
-			
-			$message = 'You have successfully saved your revisions to the <strong>' . $page->page_name . '</strong> page.<br/>';
-			$message.= 'The page you just created is locationed at this URL: ' . $this->site->domain . '/' . $page->page_url . '';
-
-			return Redirect::to('admin/page')->with('statusMessage', $message);
+		if($validation->fails()) {
+			return Redirect::to('/admin/page/edit/' . $pageId)->with('errors', $validation->messages());
 		}
+		
+		$page = $this->site->page()->with('navigation')->where('id', '=', $pageId)->first();
+		$this->savePage($page);
+		
+		$message = 'You have successfully saved your revisions to the <strong>' . $page->page_name . '</strong> page.<br/>';
+		$message.= 'The page you just created is locationed at this URL: ' . $this->site->domain . '/' . $page->page_url . '';
 
-		return Redirect::to('/admin/page/edit/' . $pageId)->with('errors', $validation->errors->all());
+		return Redirect::to('admin/page')->with('statusMessage', $message);
 	}
 
 	public function delete($pageId) {
@@ -89,20 +91,18 @@ class PageController extends IndexController {
 
 		$page = $this->site->page()->with('navigation')->where('id', '=', $pageId)->first();
 
-		if($validation->passes() && $page) {
-
-			$navigation = $this->site->navigation()->where('page_id', '=', $page->id)->first();
-			if($navigation) {
-				$navigation->delete();
-			}
-			$pageName = $page->page_name;
-			$page->delete();
-			unset($page);
-			return Redirect::to('admin/page')->with('statusMessage', 'You have successfully deleted the page: ' . $pageName);
-		}
-		else {
+		if($validation->fails() && !$page) {
 			return Redirect::to('admin/page/edit/'.$page->id)->with('statusMessage', 'The page ' . $pageName . ' was not deleted.');
 		}
+
+		$navigation = $this->site->navigation()->where('page_id', '=', $page->id)->first();
+		if($navigation) {
+			$navigation->delete();
+		}
+		$pageName = $page->page_name;
+		$page->delete();
+		unset($page);
+		return Redirect::to('admin/page')->with('statusMessage', 'You have successfully deleted the page: ' . $pageName);
 	}
 
 	private function savePage($page) {

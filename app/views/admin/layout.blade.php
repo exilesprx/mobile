@@ -8,9 +8,9 @@ echo'<?xml version="1.0" encoding="utf-8" ?>';
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="shortcut icon" type="image/x-ico" href="favicon.ico"/>
-	{{HTML::style('admin/css/admin.css')}}
+	{{HTML::style('assests/css/admin.css')}}
 	{{ HTML::script("http://code.jquery.com/jquery-1.9.1.min.js") }}
-	{{ HTML::script("admin/js/main.js") }}
+	{{ HTML::script("assests/js/main.js") }}
 	@section('html_head')
 	@show
 </head>
@@ -19,7 +19,7 @@ echo'<?xml version="1.0" encoding="utf-8" ?>';
 <body>
 <div id="header">
 	<a href="{{URL::to('/')}}">
-		<img id="logo" src="{{URL::asset('admin/images/admin-logo.png')}}" />
+		<img id="logo" src="{{URL::asset('assests/images/admin-logo.png')}}" />
 	</a>
 	<div style="position: absolute; top: 10px; right: 20px;">
 		@if(Auth::check())
